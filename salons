@@ -1,0 +1,956 @@
+-- MySQL dump 10.13  Distrib 5.6.24, for Win32 (x86)
+--
+-- Host: localhost    Database: salons
+-- ------------------------------------------------------
+-- Server version	5.6.24
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `account_heads`
+--
+
+DROP TABLE IF EXISTS `account_heads`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `account_heads` (
+  `id_account_heads` int(11) NOT NULL AUTO_INCREMENT,
+  `account_head` varchar(500) DEFAULT NULL,
+  `account_type` varchar(45) DEFAULT 'Expense',
+  PRIMARY KEY (`id_account_heads`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_heads`
+--
+
+LOCK TABLES `account_heads` WRITE;
+/*!40000 ALTER TABLE `account_heads` DISABLE KEYS */;
+INSERT INTO `account_heads` VALUES (1,'Bank','Asset'),(2,'Cash','Asset'),(3,'Deferred Expense','Asset'),(4,'Other Assets','Asset'),(5,'Accounts Receivable','Asset'),(6,'Supplies','Asset'),(7,'Prepaid Insurance','Asset'),(8,'Equipment','Asset'),(9,'Accumulated Depreciation Equipment','Asset'),(10,'Notes Payable','Liability'),(11,'Accounts Payable','Liability'),(12,'Unearned Service Revenue','Liability'),(13,'Tax Payable','Liability'),(14,'Bonds Payable','Liability'),(15,'Salaries and Wages Payable','Liability'),(16,'Interest Payable','Liability'),(17,'Owner\'s capital','Equity'),(18,'Share Capital-Ordinary','Equity'),(19,'Retained Earnings','Equity'),(20,'Capital contributions','Equity'),(21,'Dividends','Equity'),(22,'Income Summary','Equity'),(23,'Drawings (Distributions)','Equity'),(24,'Office Expense','Expense'),(25,'Communication Expense','Expense'),(26,'Labour & Welfare Expenses','Expense'),(27,'Advertising Expenses','Expense'),(28,'Printing & Stationery Expenses','Expense'),(29,'Supplies Expense','Expense'),(30,'Depreciation Expense','Expense'),(31,'Insurance Expense','Expense'),(32,'Salaries and Wages Expense','Expense'),(33,'Rent Expense','Expense'),(34,'Utilities Expense','Expense'),(35,'Interest Expense','Expense');
+/*!40000 ALTER TABLE `account_heads` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `appointments`
+--
+
+DROP TABLE IF EXISTS `appointments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `appointments` (
+  `id_appointments` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `appointment_remarks` varchar(550) NOT NULL DEFAULT 'No Remarks',
+  `appointment_day` varchar(45) DEFAULT NULL,
+  `appointment_month` varchar(45) DEFAULT NULL,
+  `appointment_year` varchar(45) DEFAULT NULL,
+  `appointment_hour` varchar(45) DEFAULT NULL,
+  `appointment_minutes` varchar(45) DEFAULT NULL,
+  `appointment_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `appointment_date_time` datetime DEFAULT NULL,
+  `appointment_status` varchar(15) DEFAULT 'open',
+  PRIMARY KEY (`id_appointments`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `appointments`
+--
+
+LOCK TABLES `appointments` WRITE;
+/*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
+INSERT INTO `appointments` VALUES (1,1,1,'','Saturday','April','2016','4','20','2016-04-09 12:21:10','2016-04-13 16:20:00','open'),(2,1,2,'','Monday','April','2016','5','10','2016-04-11 12:21:10','2016-04-13 17:10:10','open'),(3,1,3,'','Monday','April','2016','6','30','2016-04-11 10:50:44','2016-04-13 18:30:00','open'),(23,1,2,'No Remarks','Sun','April','2016','6','00','2016-04-17 11:52:21','2016-04-17 18:00:00','open'),(25,1,2,'test','Mon','April','2016','5','00','2016-04-17 11:56:02','2016-04-18 17:00:00','cancel'),(26,1,2,'','Mon','April','2016','5','00','2016-04-17 11:56:19','2016-04-18 17:00:00','cancel'),(27,1,17,'test','Mon','April','2016','1','45','2016-04-18 06:39:24','2016-04-18 13:45:00','close'),(28,1,2,'this is added a new','Mon','April','2016','5','00','2016-04-18 11:47:25','2016-04-18 17:00:00','open'),(29,1,5,'Needs hair trimming','Mon','April','2016','7','45','2016-04-18 12:34:59','2016-04-18 19:45:00','open'),(30,1,15,'','Mon','April','2016','8','00','2016-04-18 12:40:49','2016-04-18 20:00:00','open'),(31,1,16,'','Mon','April','2016','7','00','2016-04-18 12:58:59','2016-04-18 19:00:00','open'),(32,1,4,'','Tue','April','2016','6','00','2016-04-18 13:00:32','2016-04-19 18:00:00','open'),(33,1,16,'','Sat','April','2016','6','00','2016-04-18 13:02:22','2016-04-23 18:00:00','open'),(34,1,16,'','Tue','April','2016','3','00','2016-04-19 07:56:14','2016-04-19 15:00:00','open'),(35,1,17,'','Tue','April','2016','4','00','2016-04-19 07:56:33','2016-04-19 16:00:00','open'),(36,1,5,'','Tue','April','2016','5','00','2016-04-19 07:58:38','2016-04-19 17:00:00','open'),(37,1,13,'','Tue','April','2016','2','15','2016-04-19 08:14:04','2016-04-19 14:15:00','open'),(38,1,1,'','Wed','April','2016','2','45','2016-04-20 05:45:49','2016-04-20 14:45:00','open'),(39,1,17,'','Thu','April','2016','6','45','2016-04-21 10:58:46','2016-04-21 18:45:00','open'),(40,1,15,'','Thu','April','2016','7','45','2016-04-21 10:59:11','2016-04-21 19:45:00','open'),(41,1,12,'','Tue','April','2016','12','30','2016-04-24 07:43:41','2016-04-26 12:30:00','close'),(42,1,13,'party makeup','Mon','April','2016','12','00','2016-04-24 18:48:41','2016-04-25 12:00:00','open'),(43,1,13,'party makeup','Sun','April','2016','8','00','2016-04-24 18:49:05','2016-04-24 20:00:00','open'),(44,1,13,'hair styling for evening party','Wed','April','2016','12','45','2016-04-27 17:46:50','2016-04-27 00:45:00','open'),(45,1,1,'','Sun','May','2016','2','45','2016-04-30 21:45:34','2016-05-01 02:45:00','open'),(46,1,6,'','Tue','May','2016','10','45','2016-05-02 17:34:27','2016-05-03 22:45:00','open'),(47,1,12,'','Tue','May','2016','8','30','2016-05-04 15:21:16','2016-05-17 20:30:00','open'),(48,1,2,'','Wed','May','2016','12','30','2016-05-04 15:21:41','2016-05-04 00:30:00','open'),(49,1,3,'','Thu','May','2016','5','30','2016-05-12 12:23:22','2016-05-12 17:30:00','open');
+/*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bank_accounts`
+--
+
+DROP TABLE IF EXISTS `bank_accounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bank_accounts` (
+  `id_bank_accounts` int(11) NOT NULL AUTO_INCREMENT,
+  `bank_name` varchar(145) DEFAULT NULL,
+  `bank_address` varchar(750) DEFAULT NULL,
+  `account_no` varchar(145) DEFAULT NULL,
+  `account_title` varchar(255) DEFAULT NULL,
+  `ibn` varchar(245) DEFAULT NULL,
+  PRIMARY KEY (`id_bank_accounts`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bank_accounts`
+--
+
+LOCK TABLES `bank_accounts` WRITE;
+/*!40000 ALTER TABLE `bank_accounts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bank_accounts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business`
+--
+
+DROP TABLE IF EXISTS `business`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business` (
+  `id_business` int(11) NOT NULL AUTO_INCREMENT,
+  `business_name` varchar(255) DEFAULT NULL,
+  `business_address` varchar(550) DEFAULT NULL,
+  `business_area` varchar(145) DEFAULT NULL,
+  `business_logo` varchar(145) DEFAULT NULL,
+  `business_phone1` varchar(45) DEFAULT NULL,
+  `business_phone2` varchar(45) DEFAULT NULL,
+  `business_phone3` varchar(45) DEFAULT NULL,
+  `business_phone4` varchar(45) DEFAULT NULL,
+  `business_owner` varchar(255) DEFAULT NULL,
+  `business_owner_contact` varchar(45) DEFAULT NULL,
+  `payment_terms` tinytext,
+  PRIMARY KEY (`id_business`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business`
+--
+
+LOCK TABLES `business` WRITE;
+/*!40000 ALTER TABLE `business` DISABLE KEYS */;
+INSERT INTO `business` VALUES (1,'Amethyst','Clifton','Clifton','amethyst_spa_karachi.png','123456','123456','123456','123456','Roohi','123456','Payments are non refundable. Payments will be recieved in cash or through cards only.');
+/*!40000 ALTER TABLE `business` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_brands`
+--
+
+DROP TABLE IF EXISTS `business_brands`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_brands` (
+  `id_business_brands` int(11) NOT NULL AUTO_INCREMENT,
+  `supplier_id` int(11) DEFAULT NULL,
+  `business_id` int(11) DEFAULT NULL,
+  `business_brand_name` varchar(145) DEFAULT NULL,
+  `business_brand_short` varchar(45) DEFAULT NULL,
+  `business_brand_website` varchar(145) DEFAULT NULL,
+  `business_brand_active` char(3) DEFAULT 'Yes',
+  PRIMARY KEY (`id_business_brands`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_brands`
+--
+
+LOCK TABLES `business_brands` WRITE;
+/*!40000 ALTER TABLE `business_brands` DISABLE KEYS */;
+INSERT INTO `business_brands` VALUES (1,1,1,'Karaja','KAJ','http://www.karaja.com','Yes'),(2,1,1,'Sunsilk','SS',NULL,'Yes'),(3,1,1,'Jordan','JN',NULL,'Yes'),(4,NULL,1,'test','','test','No');
+/*!40000 ALTER TABLE `business_brands` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_discounts`
+--
+
+DROP TABLE IF EXISTS `business_discounts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_discounts` (
+  `id_business_discounts` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `discount_def` varchar(600) DEFAULT NULL,
+  `discount_rate` int(11) DEFAULT NULL,
+  `discount_createdon` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `discount_visits` int(11) DEFAULT NULL,
+  `discount_purchase` decimal(10,2) DEFAULT NULL,
+  `discount_active` char(1) DEFAULT NULL,
+  `discount_period` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_business_discounts`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_discounts`
+--
+
+LOCK TABLES `business_discounts` WRITE;
+/*!40000 ALTER TABLE `business_discounts` DISABLE KEYS */;
+INSERT INTO `business_discounts` VALUES (1,1,'A discount applied to every Nth invoice of a customer within a defined period.',10,'2016-05-17 11:03:44',10,NULL,'Y',180),(2,1,'A discount applied to a customer\'s invoice on a single purchase of more than X amount.',5,'2016-05-17 11:03:44',NULL,20000.00,'Y',NULL),(3,1,'A discount applied to a customer on a cumulative purchase of X amount over a year.',25,'2016-05-17 11:03:44',NULL,100000.00,'Y',365);
+/*!40000 ALTER TABLE `business_discounts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_emails`
+--
+
+DROP TABLE IF EXISTS `business_emails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_emails` (
+  `id_business_emails` int(11) NOT NULL AUTO_INCREMENT,
+  `email_type` varchar(145) DEFAULT NULL,
+  `business_email` varchar(145) DEFAULT NULL,
+  PRIMARY KEY (`id_business_emails`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_emails`
+--
+
+LOCK TABLES `business_emails` WRITE;
+/*!40000 ALTER TABLE `business_emails` DISABLE KEYS */;
+/*!40000 ALTER TABLE `business_emails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_products`
+--
+
+DROP TABLE IF EXISTS `business_products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_products` (
+  `id_business_products` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `brand_id` int(11) DEFAULT NULL,
+  `product` varchar(400) DEFAULT NULL,
+  `sku` varchar(145) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `purchase_price` decimal(10,2) DEFAULT NULL,
+  `in_stock` float DEFAULT NULL,
+  `measure_unit` varchar(45) DEFAULT NULL,
+  `business_product_active` char(3) NOT NULL DEFAULT 'Yes',
+  PRIMARY KEY (`id_business_products`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_products`
+--
+
+LOCK TABLES `business_products` WRITE;
+/*!40000 ALTER TABLE `business_products` DISABLE KEYS */;
+INSERT INTO `business_products` VALUES (1,1,1,'Karaja Eye liner','ABC-112',4000.00,3000.00,10,'bottle','Yes'),(2,1,3,'Jorden face premier',NULL,1000.00,500.00,5,'Bottle','Yes'),(3,1,2,'Sunsilk Shampoo 25ml',NULL,1000.00,800.00,25,'Bottle','Yes'),(6,1,2,'Egg Shampoo','SS-440',800.00,600.00,25,'Bottle','Yes'),(7,1,2,'Frizzy Conditioner','SS-8754',1500.00,1000.00,30,'Bottle','Yes'),(8,1,1,'Karaja Lipstick Berry Shade','K-654321',900.00,600.00,2,'Piece','Yes');
+/*!40000 ALTER TABLE `business_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_services`
+--
+
+DROP TABLE IF EXISTS `business_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_services` (
+  `id_business_services` int(11) NOT NULL AUTO_INCREMENT,
+  `service_category_id` int(11) DEFAULT NULL,
+  `business_id` int(11) DEFAULT NULL,
+  `service_name` varchar(500) DEFAULT NULL,
+  `service_desc` mediumtext,
+  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `service_rate` decimal(10,2) DEFAULT NULL,
+  `service_active` char(3) DEFAULT 'Yes',
+  `commission_perc` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_business_services`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_services`
+--
+
+LOCK TABLES `business_services` WRITE;
+/*!40000 ALTER TABLE `business_services` DISABLE KEYS */;
+INSERT INTO `business_services` VALUES (1,1,1,'Hair Cutting','trimming','2016-04-19 08:27:19',1000.00,'Yes',10),(2,1,1,'Hair Styling','','2016-04-19 08:27:19',1000.00,'Yes',5),(3,1,1,'Blow Dry','','2016-04-19 08:27:19',500.00,'Yes',2),(4,1,1,'Washing',NULL,'2016-04-19 08:27:19',250.00,'Yes',0),(5,2,1,'Full Body','','2016-04-19 08:27:19',2500.00,'Yes',1),(6,2,1,'Legs only',NULL,'2016-04-19 08:28:32',1000.00,'Yes',0),(7,2,1,'Arms only',NULL,'2016-04-19 08:28:32',800.00,'Yes',0),(8,2,1,'Bikini wax',NULL,'2016-04-19 08:28:32',1500.00,'Yes',0),(12,4,1,'Party Makeup','','2016-05-02 20:00:25',6000.00,'Yes',0),(13,4,1,'Evening Makeup','','2016-05-02 20:00:43',6000.00,'Yes',0),(14,4,1,'Bridal Makeup','','2016-05-02 20:00:56',50000.00,'Yes',0),(15,1,1,'test','test','2016-05-06 13:27:35',100.00,'No',0);
+/*!40000 ALTER TABLE `business_services` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_supplier`
+--
+
+DROP TABLE IF EXISTS `business_supplier`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_supplier` (
+  `id_business_supplier` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `supplier_name` varchar(450) DEFAULT NULL,
+  `contact_person` varchar(255) DEFAULT NULL,
+  `contact_number` varchar(45) DEFAULT NULL,
+  `office_phone1` varchar(45) DEFAULT NULL,
+  `office_phone2` varchar(45) DEFAULT NULL,
+  `website` varchar(45) DEFAULT NULL,
+  `ho_address` varchar(800) DEFAULT NULL,
+  `email` varchar(145) DEFAULT NULL,
+  PRIMARY KEY (`id_business_supplier`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_supplier`
+--
+
+LOCK TABLES `business_supplier` WRITE;
+/*!40000 ALTER TABLE `business_supplier` DISABLE KEYS */;
+INSERT INTO `business_supplier` VALUES (1,1,'Cosmo Group','Abbas','0321456789','0214587454',NULL,'www.cosmogroup.com.pk','5 Clifton','abbas@cosmo.com.pk'),(2,1,'Xam Cosmetics','Abdul Shakoor','03332124578','02135245221','','www.xam.com.pk','Zamzama phase 6','as@xam.com.pk');
+/*!40000 ALTER TABLE `business_supplier` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_taxes`
+--
+
+DROP TABLE IF EXISTS `business_taxes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_taxes` (
+  `id_business_taxes` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `tax_name` varchar(245) DEFAULT NULL,
+  `tax_active` char(1) DEFAULT 'Y',
+  `tax_percentage` decimal(2,0) DEFAULT NULL,
+  PRIMARY KEY (`id_business_taxes`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_taxes`
+--
+
+LOCK TABLES `business_taxes` WRITE;
+/*!40000 ALTER TABLE `business_taxes` DISABLE KEYS */;
+INSERT INTO `business_taxes` VALUES (1,1,'GST','Y',14),(2,1,'VAT','Y',10);
+/*!40000 ALTER TABLE `business_taxes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `business_type`
+--
+
+DROP TABLE IF EXISTS `business_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `business_type` (
+  `id_business_type` int(11) NOT NULL AUTO_INCREMENT,
+  `business_type` varchar(145) DEFAULT NULL,
+  PRIMARY KEY (`id_business_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `business_type`
+--
+
+LOCK TABLES `business_type` WRITE;
+/*!40000 ALTER TABLE `business_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `business_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_orders`
+--
+
+DROP TABLE IF EXISTS `customer_orders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer_orders` (
+  `id_customer_order` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `customer_order_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `order_status` varchar(45) DEFAULT 'open',
+  PRIMARY KEY (`id_customer_order`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_orders`
+--
+
+LOCK TABLES `customer_orders` WRITE;
+/*!40000 ALTER TABLE `customer_orders` DISABLE KEYS */;
+INSERT INTO `customer_orders` VALUES (44,1,12,'2016-05-05 12:09:47','invoiced'),(45,1,6,'2016-05-05 13:58:25','invoiced'),(46,1,12,'2016-05-06 10:50:18','invoiced'),(47,1,4,'2016-05-08 11:54:41','invoiced'),(48,1,16,'2016-05-13 12:19:06','invoiced');
+/*!40000 ALTER TABLE `customer_orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_preference`
+--
+
+DROP TABLE IF EXISTS `customer_preference`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer_preference` (
+  `id_customer_preference` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  `service_id` int(11) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_customer_preference`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_preference`
+--
+
+LOCK TABLES `customer_preference` WRITE;
+/*!40000 ALTER TABLE `customer_preference` DISABLE KEYS */;
+/*!40000 ALTER TABLE `customer_preference` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customer_visits`
+--
+
+DROP TABLE IF EXISTS `customer_visits`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customer_visits` (
+  `id_customer_visits` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `customer_visit_date` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `visit_status` varchar(45) DEFAULT 'open',
+  PRIMARY KEY (`id_customer_visits`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customer_visits`
+--
+
+LOCK TABLES `customer_visits` WRITE;
+/*!40000 ALTER TABLE `customer_visits` DISABLE KEYS */;
+INSERT INTO `customer_visits` VALUES (25,1,12,'2016-04-24 12:22:15','invoiced'),(26,1,1,'2016-04-30 17:35:33','invoiced'),(27,1,2,'2016-04-30 17:41:30','invoiced'),(28,1,12,'2016-04-30 20:36:53','invoiced'),(29,1,15,'2016-04-30 20:46:43','invoiced'),(30,1,5,'2016-04-30 20:47:20','invoiced'),(31,1,6,'2016-05-01 12:16:21','invoiced'),(32,1,1,'2016-05-01 16:20:50','invoiced'),(33,1,12,'2016-05-01 16:37:02','invoiced'),(34,1,2,'2016-05-04 20:22:16','invoiced'),(35,1,4,'2016-05-05 22:01:19','invoiced'),(36,1,1,'2016-05-06 14:33:04','invoiced'),(37,1,2,'2016-05-06 14:39:12','invoiced'),(38,1,4,'2016-05-06 14:58:00','invoiced'),(39,1,1,'2016-05-07 10:42:53','invoiced'),(40,1,2,'2016-05-07 10:47:41','invoiced'),(41,1,2,'2016-05-07 10:50:22','invoiced'),(42,1,3,'2016-05-08 11:48:00','invoiced'),(43,1,1,'2016-05-08 12:02:04','invoiced'),(44,1,16,'2016-05-11 12:18:48','invoiced'),(45,1,13,'2016-05-11 13:20:11','invoiced'),(46,1,2,'2016-05-13 11:44:28','invoiced'),(47,1,17,'2016-05-13 12:28:41','invoiced'),(48,1,21,'2016-05-16 16:30:23','invoiced');
+/*!40000 ALTER TABLE `customer_visits` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customers`
+--
+
+DROP TABLE IF EXISTS `customers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customers` (
+  `id_customers` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_name` varchar(500) DEFAULT NULL,
+  `customer_email` varchar(145) DEFAULT NULL,
+  `customer_cell` varchar(45) NOT NULL,
+  `customer_address` varchar(405) DEFAULT NULL,
+  `customer_phone1` varchar(45) DEFAULT NULL,
+  `customer_phone2` varchar(45) DEFAULT NULL,
+  `customer_image` varchar(45) DEFAULT 'avatar-1.jpg',
+  `customer_birthday` int(11) DEFAULT NULL,
+  `customer_anniversary` date DEFAULT NULL,
+  `customer_birthmonth` varchar(10) DEFAULT 'January',
+  `customer_allergies` mediumtext,
+  `customer_alert` mediumtext,
+  PRIMARY KEY (`id_customers`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customers`
+--
+
+LOCK TABLES `customers` WRITE;
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,1,'Miss X from Bangkok','x@y.com','123456','abc somewhere','65432187','321654897','avatar-13.jpg',20,NULL,'February',NULL,NULL),(2,1,'Sadia Khan','sadia@x.com','12345678','acb somewhere','654321','987654','avatar-3.jpg',12,'2015-03-06','July','','Special alert message testing text only'),(3,1,'Anum Saeed','anum@x.com','123456789','abc somewhere','654321','987654','avatar-12.jpg',4,NULL,'March',NULL,NULL),(4,1,'Jamila Ahmed','jamila@x.com','123456789','abc somewhere','654321','987654','avatar-5.jpg',2,NULL,'January',NULL,NULL),(5,1,'Shahida Rafiq','shaid@x.com','123456789','abc somewhere','654321','987654','avatar-6.jpg',16,'2015-03-06','June','',''),(6,1,'Arsalan Junejo','arsalan@x.com','123456789','abc somewhere','654321','987654','avatar-2.jpg',28,NULL,'October',NULL,NULL),(12,1,'Sara Sangeen','sara@x.com','0321456789','Some place far far away, in the mist of the forest','','','avatar-14.jpg',15,'2013-02-12','September','dye color',''),(13,1,'Jaria Khan','jaria@x.com','033145214521','Somewhere we dont\' know','','','avatar-7.jpg',10,'2014-02-26','February','',''),(15,1,'Sharmila Tagor','shermila@sherminda.com','0333214521452','what, who, where',NULL,NULL,'avatar-8.jpg',4,NULL,'March',NULL,NULL),(16,1,'Yasmeen Bleath','yasmeen@x.com','031341526341','Phew another one','','','avatar-10.jpg',25,'2010-06-30','April','eye liner, kajal',''),(17,1,'Farida Kanum','farida@x.com','0321458541','C-123, Sector I, North Karachi','9221-8985658','','avatar-2.jpg',18,'2015-02-10','April','Dye Color, Nail Polish','Friends with Miss X, usually gets 10% discount'),(19,1,'Farigh Aunti','a@b.net','098098','akjdf','','','avatar-1.jpg',19,'2015-12-28','June','',''),(20,1,'Haleem Pakao','haleem@deg.com','03332124578','Abc. Square, xyz Rd. Karachi',NULL,NULL,'avatar-1.jpg',5,NULL,'December',NULL,NULL),(21,1,'Saira bano','saira@bano.com','0333789456','ABC, Plot XYZ',NULL,NULL,'avatar-1.jpg',18,NULL,'December',NULL,NULL);
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `general_ledger`
+--
+
+DROP TABLE IF EXISTS `general_ledger`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `general_ledger` (
+  `id_general_ledger` int(11) NOT NULL AUTO_INCREMENT,
+  `account_id` int(11) DEFAULT NULL,
+  `bank_account_id` int(11) DEFAULT NULL,
+  `description` varchar(755) DEFAULT NULL,
+  `debit` decimal(19,4) DEFAULT NULL,
+  `credit` decimal(19,4) DEFAULT NULL,
+  PRIMARY KEY (`id_general_ledger`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `general_ledger`
+--
+
+LOCK TABLES `general_ledger` WRITE;
+/*!40000 ALTER TABLE `general_ledger` DISABLE KEYS */;
+/*!40000 ALTER TABLE `general_ledger` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoice`
+--
+
+DROP TABLE IF EXISTS `invoice`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invoice` (
+  `id_invoice` int(11) NOT NULL AUTO_INCREMENT,
+  `invoice_number` varchar(45) DEFAULT NULL,
+  `invoice_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `customer_id` int(11) DEFAULT NULL,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_name` varchar(455) DEFAULT NULL,
+  `customer_address` varchar(645) DEFAULT NULL,
+  `customer_cell` varchar(45) DEFAULT NULL,
+  `customer_email` varchar(45) DEFAULT NULL,
+  `sub_total` decimal(10,2) DEFAULT NULL,
+  `discount` decimal(10,2) DEFAULT NULL,
+  `gross_amount` float DEFAULT NULL,
+  `tax_total` decimal(10,2) DEFAULT NULL,
+  `net_amount` float DEFAULT NULL,
+  `visit_id` int(11) DEFAULT NULL,
+  `invoice_status` varchar(45) DEFAULT 'valid',
+  `invoice_type` varchar(45) DEFAULT 'service',
+  `payment_mode` varchar(15) DEFAULT NULL,
+  `instrument_number` varchar(75) DEFAULT NULL,
+  PRIMARY KEY (`id_invoice`)
+) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoice`
+--
+
+LOCK TABLES `invoice` WRITE;
+/*!40000 ALTER TABLE `invoice` DISABLE KEYS */;
+INSERT INTO `invoice` VALUES (4,'2016-04-00001','2016-04-30 12:33:57',12,1,'Sara Sangeen','Some place far far away, in the mist of the forest','0321456789','sara@x.com',2100.00,0.00,2100,0.00,2100,25,'valid','service','Cash',NULL),(5,'2016-04-00001','2016-04-30 12:35:51',1,1,'Miss X from Bangkok','abc somewhere','123456','x@y.com',3500.00,0.00,3500,0.00,3500,26,'valid','service','Cash',NULL),(6,'2016-04-00001','2016-04-30 12:41:41',2,1,'Sadia Khan','acb somewhere','12345678','sadia@x.com',1000.00,0.00,1000,240.00,1240,27,'valid','service','Cash',NULL),(7,'2016-04-0007','2016-04-30 13:11:48',1,1,'Miss X from Bangkok','abc somewhere','123456','x@y.com',3500.00,0.00,3500,0.00,3500,26,'valid','service','Cash',NULL),(8,'2016-04-0008','2016-04-30 13:12:32',12,1,'Sara Sangeen','Some place far far away, in the mist of the forest','0321456789','sara@x.com',2100.00,0.00,2100,0.00,2100,25,'valid','service','Cash',NULL),(9,'2016-04-0009','2016-04-30 15:37:07',12,1,'Sara Sangeen','Some place far far away, in the mist of the forest','0321456789','sara@x.com',2350.00,500.00,1850,0.00,1850,28,'valid','service','Cash',NULL),(10,'2016-04-0010','2016-04-30 15:48:05',5,1,'Shahida Rafiq','abc somewhere','123456789','shaid@x.com',1100.00,0.00,1100,0.00,1100,30,'valid','service','Cash',NULL),(11,'2016-05-0011','2016-04-30 19:18:05',15,1,'Sharmila Tagor','what, who, where','0333214521452','shermila@sherminda.com',2900.00,0.00,2900,0.00,2900,29,'cancelled','service','Cash',NULL),(12,'2016-05-0012','2016-04-30 20:01:53',15,1,'Sharmila Tagor','what, who, where','0333214521452','shermila@sherminda.com',2900.00,0.00,2900,0.00,2900,29,'cancelled','service','Cash',NULL),(13,'2016-05-0013','2016-04-30 20:02:27',15,1,'Sharmila Tagor','what, who, where','0333214521452','shermila@sherminda.com',2900.00,0.00,2900,0.00,2900,29,'valid','service','Cash',NULL),(14,'2016-05-0014','2016-05-01 11:37:23',6,1,'Arsalan Junejo','abc somewhere','123456789','arsalan@x.com',2100.00,0.00,2100,0.00,2100,31,'valid','service','Cash',NULL),(15,'2016-05-0015','2016-05-02 20:08:24',1,1,'Miss X from Bangkok','abc somewhere','123456','x@y.com',3500.00,0.00,3500,0.00,3500,32,'valid','service','Cash',NULL),(16,'2016-05-0016','2016-05-03 18:24:25',12,1,'Sara Sangeen','Some place far far away, in the mist of the forest','0321456789','sara@x.com',2750.00,0.00,2750,0.00,2750,33,'valid','service','Cash',NULL),(17,'2016-05-0017','2016-05-04 15:22:59',2,1,'Sadia Khan','acb somewhere','12345678','sadia@x.com',6000.00,200.00,5800,1392.00,7192,34,'cancelled','service','Cash',NULL),(18,'2016-05-0018','2016-05-04 15:24:17',2,1,'Sadia Khan','acb somewhere','12345678','sadia@x.com',6000.00,0.00,6000,0.00,6000,34,'valid','service','Cash',NULL),(27,'2016-05-0019','2016-05-05 07:10:06',12,1,'Sara Sangeen','Some place far far away, in the mist of the forest','0321456789','sara@x.com',3000.00,500.00,2500,600.00,3100,44,'valid','sale','Cash',NULL),(28,'2016-05-0028','2016-05-05 08:58:38',6,1,'Arsalan Junejo','abc somewhere','123456789','arsalan@x.com',9000.00,0.00,9000,0.00,9000,45,'valid','sale','Cash',NULL),(29,'2016-05-0029','2016-05-05 17:01:24',4,1,'Jamila Ahmed','abc somewhere','123456789','jamila@x.com',1000.00,0.00,1000,0.00,1000,35,'cancelled','service','Cash',NULL),(30,'2016-05-0029','2016-05-05 17:01:39',4,1,'Jamila Ahmed','abc somewhere','123456789','jamila@x.com',1000.00,0.00,1000,0.00,1000,35,'cancelled','service','Cash',NULL),(32,'2016-05-0032','2016-05-05 17:03:59',4,1,'Jamila Ahmed','abc somewhere','123456789','jamila@x.com',1000.00,0.00,1000,0.00,1000,35,'cancelled','service','Cash',NULL),(33,'2016-05-0032','2016-05-05 17:06:36',4,1,'Jamila Ahmed','abc somewhere','123456789','jamila@x.com',1000.00,0.00,1000,0.00,1000,35,'valid','service','Cash',NULL),(34,'2016-05-0034','2016-05-05 17:14:58',4,1,'Jamila Ahmed','abc somewhere','123456789','jamila@x.com',1000.00,0.00,1000,0.00,1000,35,'valid','service','Cash',NULL),(35,'2016-05-0035','2016-05-06 09:18:54',12,1,'Sara Sangeen','Some place far far away, in the mist of the forest','0321456789','sara@x.com',2000.00,0.00,2000,0.00,2000,46,'valid','sale','Check','321654987624'),(36,'2016-05-0036','2016-05-06 09:37:42',1,1,'Miss X from Bangkok','abc somewhere','123456','x@y.com',2000.00,0.00,2000,480.00,2480,36,'valid','service','Cash',NULL),(37,'2016-05-0037','2016-05-06 09:39:42',2,1,'Sadia Khan','acb somewhere','12345678','sadia@x.com',6000.00,500.00,5500,1320.00,6820,37,'valid','service','Card','456385259008'),(38,'2016-05-0038','2016-05-06 09:58:07',4,1,'Jamila Ahmed','abc somewhere','123456789','jamila@x.com',6000.00,0.00,6000,0.00,6000,38,'valid','service','Cash',''),(39,'2016-05-0039','2016-05-07 05:42:59',1,1,'Miss X from Bangkok','abc somewhere','123456','x@y.com',1000.00,0.00,1000,0.00,1000,39,'valid','service','Cash',''),(40,'2016-05-0040','2016-05-07 05:47:46',2,1,'Sadia Khan','acb somewhere','12345678','sadia@x.com',1000.00,0.00,1000,0.00,1000,40,'valid','service','Cash',''),(41,'2016-05-0041','2016-05-07 05:50:29',2,1,'Sadia Khan','acb somewhere','12345678','sadia@x.com',1000.00,0.00,1000,0.00,1000,41,'valid','service','Cash',''),(42,'2016-05-0042','2016-05-08 06:48:07',3,1,'Anum Saeed','abc somewhere','123456789','anum@x.com',2500.00,0.00,2500,0.00,2500,42,'valid','service','Cash',''),(43,'2016-05-0043','2016-05-08 06:54:45',4,1,'Jamila Ahmed','abc somewhere','123456789','jamila@x.com',112000.00,0.00,112000,0.00,112000,47,'cancelled','sale','Cash',''),(44,'2016-05-0044','2016-05-08 07:02:16',1,1,'Miss X from Bangkok','abc somewhere','123456','x@y.com',6800.00,0.00,6800,0.00,6800,43,'valid','service','Cash',''),(45,'2016-05-0045','2016-05-11 07:18:57',16,1,'Yasmeen Bleath','Phew another one','031341526341','yasmeen@x.com',2500.00,0.00,2500,0.00,2500,44,'valid','service','Cash',''),(46,'2016-05-0046','2016-05-11 08:20:17',13,1,'Jaria Khan','Somewhere we dont\' know','033145214521','jaria@x.com',2000.00,0.00,2000,0.00,2000,45,'valid','service','Cash',''),(47,'2016-05-0047','2016-05-13 06:44:34',2,1,'Sadia Khan','acb somewhere','12345678','sadia@x.com',1000.00,0.00,1000,0.00,1000,46,'valid','service','Cash',''),(48,'2016-05-0048','2016-05-13 07:19:20',16,1,'Yasmeen Bleath','Phew another one','031341526341','yasmeen@x.com',2000.00,200.00,1800,0.00,1800,48,'valid','sale','Cash',''),(49,'2016-05-0049','2016-05-16 07:28:20',17,1,'Farida Kanum','C-123, Sector I, North Karachi','0321458541','farida@x.com',1250.00,0.00,1250,0.00,1250,47,'valid','service','Cash',''),(50,'2016-05-0050','2016-05-16 11:30:28',21,1,'Saira bano','ABC, Plot XYZ','0333789456','saira@bano.com',500.00,0.00,500,0.00,500,48,'valid','service','Cash','');
+/*!40000 ALTER TABLE `invoice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoice_details`
+--
+
+DROP TABLE IF EXISTS `invoice_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invoice_details` (
+  `id_invoice_details` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `invoice_id` int(11) DEFAULT NULL,
+  `service_category` varchar(100) DEFAULT NULL,
+  `service_name` varchar(255) DEFAULT NULL,
+  `staff` varchar(500) DEFAULT NULL,
+  `products` varchar(800) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id_invoice_details`)
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoice_details`
+--
+
+LOCK TABLES `invoice_details` WRITE;
+/*!40000 ALTER TABLE `invoice_details` DISABLE KEYS */;
+INSERT INTO `invoice_details` VALUES (10,1,4,'Hair','Hair Cutting','Jasmin Fernandes | ','Karaja Eye liner | ',600.00),(11,1,4,'Hair','Hair Styling','Alya Junaid | ','',1000.00),(12,1,4,'Hair','Blow Dry','Naureen Nuzhat | ','Jorden face premier | ',500.00),(13,1,5,'Waxing Threading','Full Body','Jasmin Fernandes | ','',2500.00),(14,1,5,'Waxing Threading','Legs only','Alya Junaid | ','',1000.00),(15,1,6,'Waxing Threading','Legs only','Alya Junaid | ','',1000.00),(16,1,7,'Waxing Threading','Full Body','Jasmin Fernandes | ','',2500.00),(17,1,7,'Waxing Threading','Legs only','Alya Junaid | ','',1000.00),(18,1,8,'Hair','Hair Cutting','Jasmin Fernandes | ','Karaja Eye liner | ',600.00),(19,1,8,'Hair','Hair Styling','Alya Junaid | ','',1000.00),(20,1,8,'Hair','Blow Dry','Naureen Nuzhat | ','Jorden face premier | ',500.00),(21,1,9,'Hair','Hair Cutting','Jasmin Fernandes | ','',600.00),(22,1,9,'Hair','Hair Styling','Jasmin Fernandes | ','',1000.00),(23,1,9,'Hair','Blow Dry','Alya Junaid | ','',500.00),(24,1,9,'Hair','Washing','Naureen Nuzhat | ','',250.00),(25,1,10,'Hair','Hair Cutting','Jasmin Fernandes | ','',600.00),(26,1,10,'Hair','Blow Dry','Naureen Nuzhat | ','',500.00),(27,1,11,'Hair','Hair Cutting','Jasmin Fernandes | ','',600.00),(28,1,11,'Waxing Threading','Bikini wax','Alya Junaid | ','',1500.00),(29,1,11,'Waxing Threading','Arms only','Alya Junaid | ','',800.00),(30,1,12,'Hair','Hair Cutting','Jasmin Fernandes | ','',600.00),(31,1,12,'Waxing Threading','Bikini wax','Alya Junaid | ','',1500.00),(32,1,12,'Waxing Threading','Arms only','Alya Junaid | ','',800.00),(33,1,13,'Hair','Hair Cutting','Jasmin Fernandes | ','',600.00),(34,1,13,'Waxing Threading','Bikini wax','Alya Junaid | ','',1500.00),(35,1,13,'Waxing Threading','Arms only','Alya Junaid | ','',800.00),(36,1,14,'Hair','Hair Cutting','Jasmin Fernandes | ','Karaja Eye liner | ',600.00),(37,1,14,'Hair','Hair Styling','Naureen Nuzhat | ','',1000.00),(38,1,14,'Hair','Blow Dry','Naureen Nuzhat | ','',500.00),(39,1,15,'Waxing Threading','Full Body','Jasmin Fernandes | ','',2500.00),(40,1,15,'Waxing Threading','Legs only','Alya Junaid | ','',1000.00),(41,1,16,'Hair','Hair Cutting','Jasmin Fernandes | ','',1000.00),(42,1,16,'Hair','Hair Styling','Jasmin Fernandes | ','',1000.00),(43,1,16,'Hair','Blow Dry','Alya Junaid | ','',500.00),(44,1,16,'Hair','Washing','Naureen Nuzhat | ','',250.00),(45,1,17,'Make Up','Party Makeup','Alya Junaid | Jasmin Fernandes | ','',6000.00),(46,1,18,'Make Up','Evening Makeup','Naureen Nuzhat | ','',6000.00),(47,1,29,'Hair','Hair Cutting','Naureen Nuzhat | ','Egg Shampoo | ',1000.00),(48,1,30,'Hair','Hair Cutting','Naureen Nuzhat | ','Egg Shampoo | ',1000.00),(49,1,32,'Hair','Hair Cutting','Naureen Nuzhat | ','Egg Shampoo | ',1000.00),(50,1,33,'Hair','Hair Cutting','Naureen Nuzhat | ','Egg Shampoo | ',1000.00),(51,1,34,'Hair','Hair Cutting','Naureen Nuzhat | ','Egg Shampoo | ',1000.00),(52,1,36,'Hair','Hair Cutting','Alya Junaid | ','',1000.00),(53,1,36,'Waxing Threading','Legs only','Alya Junaid | ','',1000.00),(54,1,37,'Make Up','Evening Makeup','Naureen Nuzhat | ','',6000.00),(55,1,38,'Make Up','Evening Makeup','Alya Junaid | ','',6000.00),(56,1,39,'Hair','Hair Cutting','Alya Junaid | ','',1000.00),(57,1,40,'Hair','Hair Cutting','Naureen Nuzhat | ','',1000.00),(58,1,41,'Hair','Hair Cutting','Jasmin Fernandes | ','',1000.00),(59,1,42,'Hair','Hair Cutting','Naureen Nuzhat | ','',1000.00),(60,1,42,'Waxing Threading','Bikini wax','Jasmin Fernandes | ','',1500.00),(61,1,44,'Make Up','Evening Makeup','Naureen Nuzhat | ','',6000.00),(62,1,44,'Waxing Threading','Arms only','Naureen Nuzhat | ','',800.00),(63,1,45,'Waxing Threading','Full Body','Naureen Nuzhat | ','',2500.00),(64,1,46,'Hair','Hair Cutting','Alya Junaid | ','',1000.00),(65,1,46,'Hair','Hair Styling','Alya Junaid | ','',1000.00),(66,1,47,'Hair','Hair Cutting','Naureen Nuzhat | ','',1000.00),(67,1,49,'Hair','Hair Cutting','Naureen Nuzhat | ','',1000.00),(68,1,49,'Hair','Washing','Naureen Nuzhat | ','',250.00),(69,1,50,'Hair','Blow Dry','Alya Junaid | ','',500.00);
+/*!40000 ALTER TABLE `invoice_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoice_products`
+--
+
+DROP TABLE IF EXISTS `invoice_products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invoice_products` (
+  `id_invoice_products` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `invoice_id` int(11) DEFAULT NULL,
+  `staff_name` varchar(500) DEFAULT NULL,
+  `product_name` varchar(450) DEFAULT NULL,
+  `brand_name` varchar(405) DEFAULT NULL,
+  `invoice_qty` int(11) DEFAULT NULL,
+  `invoice_product_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `price` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id_invoice_products`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoice_products`
+--
+
+LOCK TABLES `invoice_products` WRITE;
+/*!40000 ALTER TABLE `invoice_products` DISABLE KEYS */;
+INSERT INTO `invoice_products` VALUES (7,1,27,'Naureen Nuzhat','Sunsilk Shampoo 25ml','Sunsilk',1,'2016-05-05 07:10:07',1000.00),(8,1,27,'Naureen Nuzhat','Jorden face premier','Jordan',2,'2016-05-05 07:10:07',1000.00),(9,1,28,'Naureen Nuzhat','Jorden face premier','Jordan',9,'2016-05-05 08:58:38',1000.00),(10,1,35,'','Jorden face premier','Jordan',2,'2016-05-06 09:18:54',1000.00),(11,1,43,'Naureen Nuzhat','Karaja Eye liner','Karaja',28,'2016-05-08 06:54:45',4000.00),(12,1,48,'Alya Junaid','Jorden face premier','Jordan',2,'2016-05-13 07:19:20',1000.00);
+/*!40000 ALTER TABLE `invoice_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoice_taxes`
+--
+
+DROP TABLE IF EXISTS `invoice_taxes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invoice_taxes` (
+  `id_invoice_taxes` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `invoice_id` int(11) DEFAULT NULL,
+  `invoice_tax_name` varchar(255) DEFAULT NULL,
+  `invoice_tax` double(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id_invoice_taxes`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoice_taxes`
+--
+
+LOCK TABLES `invoice_taxes` WRITE;
+/*!40000 ALTER TABLE `invoice_taxes` DISABLE KEYS */;
+INSERT INTO `invoice_taxes` VALUES (3,1,6,'GST ',140.00),(4,1,6,'VAT ',100.00),(5,1,17,'GST ',812.00),(6,1,17,'VAT ',580.00),(7,1,27,'GST ',350.00),(8,1,27,'VAT ',250.00),(9,1,36,'GST ',280.00),(10,1,36,'VAT ',200.00),(11,1,37,'GST ',770.00),(12,1,37,'VAT ',550.00);
+/*!40000 ALTER TABLE `invoice_taxes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_products`
+--
+
+DROP TABLE IF EXISTS `order_products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order_products` (
+  `id_order_products` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_order_id` int(11) DEFAULT NULL,
+  `business_brand_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `product_name` varchar(450) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `staff_id` varchar(500) DEFAULT NULL,
+  `staff_name` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id_order_products`)
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_products`
+--
+
+LOCK TABLES `order_products` WRITE;
+/*!40000 ALTER TABLE `order_products` DISABLE KEYS */;
+INSERT INTO `order_products` VALUES (29,1,44,NULL,2,'Jorden face premier',2,'3','Naureen Nuzhat'),(30,1,44,NULL,3,'Sunsilk Shampoo 25ml',1,'3','Naureen Nuzhat'),(31,1,45,NULL,2,'Jorden face premier',9,'3','Naureen Nuzhat'),(32,1,46,NULL,2,'Jorden face premier',2,'',''),(33,1,47,NULL,1,'Karaja Eye liner',28,'3','Naureen Nuzhat'),(34,1,48,NULL,2,'Jorden face premier',2,'2','Alya Junaid');
+/*!40000 ALTER TABLE `order_products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `id_roles` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(45) DEFAULT NULL,
+  `role_desc` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_roles`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'Admin','Administration'),(2,'Reception','Receptionist hanlding visits and Appointments');
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `service_category`
+--
+
+DROP TABLE IF EXISTS `service_category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `service_category` (
+  `id_service_category` int(11) NOT NULL AUTO_INCREMENT,
+  `service_category` varchar(145) DEFAULT NULL,
+  `business_id` int(11) DEFAULT NULL,
+  `service_category_active` char(3) DEFAULT 'Yes',
+  PRIMARY KEY (`id_service_category`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `service_category`
+--
+
+LOCK TABLES `service_category` WRITE;
+/*!40000 ALTER TABLE `service_category` DISABLE KEYS */;
+INSERT INTO `service_category` VALUES (1,'Hair',1,'Yes'),(2,'Waxing Threading',1,'Yes'),(3,'Skin Treatments',1,'Yes'),(4,'Make Up',1,'Yes'),(5,'Mehndi',1,'Yes'),(6,'Massage',1,'Yes'),(7,'Permanent Makeup',1,'Yes'),(8,'Sauna',1,'Yes'),(9,'Electrolysis',1,'Yes'),(10,'Hand/Foot Care',1,'Yes'),(11,'Facials',1,'Yes'),(12,'Anti Aging',1,'Yes'),(13,'Men\'s Grooming',1,'Yes');
+/*!40000 ALTER TABLE `service_category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `services_recieved`
+--
+
+DROP TABLE IF EXISTS `services_recieved`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `services_recieved` (
+  `id_services_recieved` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `business_service_id` int(11) DEFAULT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  `visit_id` int(11) DEFAULT NULL,
+  `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_services_recieved`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `services_recieved`
+--
+
+LOCK TABLES `services_recieved` WRITE;
+/*!40000 ALTER TABLE `services_recieved` DISABLE KEYS */;
+/*!40000 ALTER TABLE `services_recieved` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `staff`
+--
+
+DROP TABLE IF EXISTS `staff`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `staff` (
+  `id_staff` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `staff_firstname` varchar(45) DEFAULT NULL,
+  `staff_lastname` varchar(45) DEFAULT NULL,
+  `staff_fullname` varchar(145) DEFAULT NULL,
+  `staff_cell` varchar(45) DEFAULT NULL,
+  `staff_phone1` varchar(45) DEFAULT NULL,
+  `staff_phone2` varchar(45) DEFAULT NULL,
+  `staff_address` varchar(45) DEFAULT NULL,
+  `staff_eid` varchar(45) DEFAULT NULL,
+  `staff_image` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id_staff`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `staff`
+--
+
+LOCK TABLES `staff` WRITE;
+/*!40000 ALTER TABLE `staff` DISABLE KEYS */;
+INSERT INTO `staff` VALUES (1,1,'Jasmin','Fernandes','Jasmin Fernandes','0321456789','9221-3457812',NULL,'ABC, Xyzabc, TTT, Karachi','H123','jasmin.jpg'),(2,1,'Alya','Junaid','Alya Junaid','03214574852',NULL,NULL,'ABC, Xyzabc, TTT, Karachi','H124','alya.jpg'),(3,1,'Naureen','Nuzhat','Naureen Nuzhat','032152416352',NULL,NULL,'ABC, Xyzabc, TTT, Karachi','H125','naureen.jpg');
+/*!40000 ALTER TABLE `staff` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `staff_attendance`
+--
+
+DROP TABLE IF EXISTS `staff_attendance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `staff_attendance` (
+  `id_staff_attendance` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  `time_in` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `time_out` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_staff_attendance`)
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `staff_attendance`
+--
+
+LOCK TABLES `staff_attendance` WRITE;
+/*!40000 ALTER TABLE `staff_attendance` DISABLE KEYS */;
+INSERT INTO `staff_attendance` VALUES (1,1,1,'2016-04-19 06:13:43',NULL),(2,1,2,'2016-04-19 06:13:43',NULL),(3,1,3,'2016-04-19 06:13:43',NULL),(7,1,1,'2016-04-20 04:35:56',NULL),(8,1,2,'2016-04-20 05:30:02','2016-04-20 06:36:31'),(9,1,3,'2016-04-20 05:30:07','2016-04-20 07:04:20'),(10,1,2,'2016-04-20 06:36:41','2016-04-20 07:00:32'),(11,1,2,'2016-04-20 07:00:37',NULL),(12,1,3,'2016-04-20 10:25:04',NULL),(13,1,2,'2016-04-21 09:25:51','2016-04-21 09:26:12'),(14,1,3,'2016-04-21 09:25:57','2016-04-21 09:26:09'),(15,1,3,'2016-04-21 09:26:21',NULL),(16,1,2,'2016-04-21 09:26:24',NULL),(17,1,1,'2016-04-21 10:57:04',NULL),(18,1,1,'2016-04-23 09:47:59',NULL),(19,1,3,'2016-04-23 09:48:03',NULL),(20,1,2,'2016-04-23 09:48:05',NULL),(21,1,1,'2016-04-24 07:17:10',NULL),(22,1,3,'2016-04-24 07:17:14',NULL),(23,1,2,'2016-04-24 07:17:16',NULL),(24,1,2,'2016-04-25 08:00:18',NULL),(25,1,3,'2016-04-25 10:27:40',NULL),(26,1,1,'2016-04-26 07:12:23',NULL),(27,1,2,'2016-04-26 07:12:26',NULL),(28,1,3,'2016-04-26 07:12:29',NULL),(29,1,1,'2016-04-27 17:45:07',NULL),(30,1,3,'2016-04-27 17:45:11','2016-04-27 17:45:22'),(31,1,2,'2016-04-27 17:45:14',NULL),(32,1,3,'2016-04-27 17:45:28',NULL),(33,1,2,'2016-04-27 20:02:21',NULL),(34,1,3,'2016-04-27 20:02:25',NULL),(35,1,1,'2016-04-27 20:02:27',NULL),(36,1,1,'2016-04-30 12:14:42',NULL),(37,1,2,'2016-04-30 12:14:44',NULL),(38,1,3,'2016-04-30 12:14:46',NULL),(39,1,1,'2016-05-01 07:14:45',NULL),(40,1,2,'2016-05-01 07:14:48',NULL),(41,1,3,'2016-05-01 07:14:53',NULL),(42,1,2,'2016-05-02 20:08:09',NULL),(43,1,1,'2016-05-04 06:39:31','2016-05-04 15:19:04'),(44,1,3,'2016-05-04 06:39:34',NULL),(45,1,2,'2016-05-04 06:39:37',NULL),(46,1,1,'2016-05-04 15:19:11','2016-05-04 15:19:47'),(47,1,1,'2016-05-04 15:19:57',NULL),(48,1,2,'2016-05-04 20:11:13',NULL),(49,1,3,'2016-05-04 20:11:17',NULL),(50,1,1,'2016-05-06 09:30:45',NULL),(51,1,2,'2016-05-06 09:30:47',NULL),(52,1,1,'2016-05-07 05:42:19',NULL),(53,1,2,'2016-05-07 05:42:22',NULL),(54,1,3,'2016-05-07 05:42:24',NULL),(55,1,2,'2016-05-08 06:47:42',NULL),(56,1,3,'2016-05-08 06:47:45',NULL),(57,1,1,'2016-05-08 06:47:47',NULL),(58,1,1,'2016-05-11 07:18:25',NULL),(59,1,3,'2016-05-11 07:18:28',NULL),(60,1,2,'2016-05-11 07:18:30',NULL),(61,1,1,'2016-05-12 12:22:35',NULL),(62,1,3,'2016-05-12 12:22:38',NULL),(63,1,2,'2016-05-12 12:22:42',NULL),(64,1,2,'2016-05-13 06:44:15',NULL),(65,1,3,'2016-05-13 06:44:18',NULL),(66,1,2,'2016-05-16 11:30:16',NULL),(67,1,1,'2016-05-24 07:34:11',NULL),(68,1,2,'2016-05-24 07:34:14',NULL),(69,1,3,'2016-05-24 07:34:18',NULL);
+/*!40000 ALTER TABLE `staff_attendance` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `staff_services`
+--
+
+DROP TABLE IF EXISTS `staff_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `staff_services` (
+  `id_staff_services` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `invoice_id` int(11) DEFAULT NULL,
+  `visit_id` int(11) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  `staff_name` varchar(145) DEFAULT NULL,
+  `service_name` varchar(200) DEFAULT NULL,
+  `service_category` varchar(200) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `staff_service_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `sale_type` varchar(45) DEFAULT 'service',
+  `qty` int(11) DEFAULT NULL,
+  `brand_name` varchar(245) DEFAULT NULL,
+  `product_name` varchar(245) DEFAULT NULL,
+  `staff_commission` decimal(10,2) DEFAULT NULL,
+  PRIMARY KEY (`id_staff_services`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `staff_services`
+--
+
+LOCK TABLES `staff_services` WRITE;
+/*!40000 ALTER TABLE `staff_services` DISABLE KEYS */;
+INSERT INTO `staff_services` VALUES (10,1,4,25,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-04-30 12:33:57','service',NULL,NULL,NULL,NULL),(11,1,4,25,NULL,2,NULL,'Hair Styling','Hair',1000.00,'2016-04-30 12:33:57','service',NULL,NULL,NULL,NULL),(12,1,4,25,NULL,3,NULL,'Blow Dry','Hair',500.00,'2016-04-30 12:33:57','service',NULL,NULL,NULL,NULL),(13,1,5,26,NULL,1,NULL,'Full Body','Waxing Threading',2500.00,'2016-04-30 12:35:51','service',NULL,NULL,NULL,NULL),(14,1,5,26,NULL,2,NULL,'Legs only','Waxing Threading',1000.00,'2016-04-30 12:35:51','service',NULL,NULL,NULL,NULL),(15,1,6,27,NULL,2,NULL,'Legs only','Waxing Threading',1000.00,'2016-04-30 12:41:41','service',NULL,NULL,NULL,NULL),(16,1,7,26,NULL,1,NULL,'Full Body','Waxing Threading',2500.00,'2016-04-30 13:11:48','service',NULL,NULL,NULL,NULL),(17,1,7,26,NULL,2,NULL,'Legs only','Waxing Threading',1000.00,'2016-04-30 13:11:49','service',NULL,NULL,NULL,NULL),(18,1,8,25,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-04-30 13:12:32','service',NULL,NULL,NULL,NULL),(19,1,8,25,NULL,2,NULL,'Hair Styling','Hair',1000.00,'2016-04-30 13:12:32','service',NULL,NULL,NULL,NULL),(20,1,8,25,NULL,3,NULL,'Blow Dry','Hair',500.00,'2016-04-30 13:12:33','service',NULL,NULL,NULL,NULL),(21,1,9,28,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-04-30 15:37:07','service',NULL,NULL,NULL,NULL),(22,1,9,28,NULL,1,NULL,'Hair Styling','Hair',1000.00,'2016-04-30 15:37:07','service',NULL,NULL,NULL,NULL),(23,1,9,28,NULL,2,NULL,'Blow Dry','Hair',500.00,'2016-04-30 15:37:07','service',NULL,NULL,NULL,NULL),(24,1,9,28,NULL,3,NULL,'Washing','Hair',250.00,'2016-04-30 15:37:07','service',NULL,NULL,NULL,NULL),(25,1,10,30,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-04-30 15:48:05','service',NULL,NULL,NULL,NULL),(26,1,10,30,NULL,3,NULL,'Blow Dry','Hair',500.00,'2016-04-30 15:48:06','service',NULL,NULL,NULL,NULL),(27,1,11,29,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-04-30 19:18:05','service',NULL,NULL,NULL,NULL),(28,1,11,29,NULL,2,NULL,'Bikini wax','Waxing Threading',1500.00,'2016-04-30 19:18:05','service',NULL,NULL,NULL,NULL),(29,1,11,29,NULL,2,NULL,'Arms only','Waxing Threading',800.00,'2016-04-30 19:18:05','service',NULL,NULL,NULL,NULL),(30,1,12,29,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-04-30 20:01:53','service',NULL,NULL,NULL,NULL),(31,1,12,29,NULL,2,NULL,'Bikini wax','Waxing Threading',1500.00,'2016-04-30 20:01:53','service',NULL,NULL,NULL,NULL),(32,1,12,29,NULL,2,NULL,'Arms only','Waxing Threading',800.00,'2016-04-30 20:01:53','service',NULL,NULL,NULL,NULL),(33,1,13,29,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-04-30 20:02:27','service',NULL,NULL,NULL,NULL),(34,1,13,29,NULL,2,NULL,'Bikini wax','Waxing Threading',1500.00,'2016-04-30 20:02:27','service',NULL,NULL,NULL,NULL),(35,1,13,29,NULL,2,NULL,'Arms only','Waxing Threading',800.00,'2016-04-30 20:02:27','service',NULL,NULL,NULL,NULL),(36,1,14,31,NULL,1,NULL,'Hair Cutting','Hair',600.00,'2016-05-01 11:37:23','service',NULL,NULL,NULL,NULL),(37,1,14,31,NULL,3,NULL,'Hair Styling','Hair',1000.00,'2016-05-01 11:37:23','service',NULL,NULL,NULL,NULL),(38,1,14,31,NULL,3,NULL,'Blow Dry','Hair',500.00,'2016-05-01 11:37:23','service',NULL,NULL,NULL,NULL),(39,1,15,32,NULL,1,NULL,'Full Body','Waxing Threading',2500.00,'2016-05-02 20:08:24','service',NULL,NULL,NULL,NULL),(40,1,15,32,NULL,2,NULL,'Legs only','Waxing Threading',1000.00,'2016-05-02 20:08:25','service',NULL,NULL,NULL,NULL),(41,1,16,33,NULL,1,NULL,'Hair Cutting','Hair',1000.00,'2016-05-03 18:24:25','service',NULL,NULL,NULL,NULL),(42,1,16,33,NULL,1,NULL,'Hair Styling','Hair',1000.00,'2016-05-03 18:24:25','service',NULL,NULL,NULL,NULL),(43,1,16,33,NULL,2,NULL,'Blow Dry','Hair',500.00,'2016-05-03 18:24:25','service',NULL,NULL,NULL,NULL),(44,1,16,33,NULL,3,NULL,'Washing','Hair',250.00,'2016-05-03 18:24:25','service',NULL,NULL,NULL,NULL),(45,1,17,34,NULL,2,NULL,'Party Makeup','Make Up',6000.00,'2016-05-04 15:23:00','service',NULL,NULL,NULL,NULL),(46,1,17,34,NULL,1,NULL,'Party Makeup','Make Up',6000.00,'2016-05-04 15:23:00','service',NULL,NULL,NULL,NULL),(47,1,18,34,NULL,3,NULL,'Evening Makeup','Make Up',6000.00,'2016-05-04 15:24:17','service',NULL,NULL,NULL,NULL),(50,1,27,NULL,44,3,NULL,NULL,NULL,1000.00,'2016-05-05 07:10:07','sale',1,'Sunsilk','Sunsilk Shampoo 25ml',NULL),(51,1,27,NULL,44,3,NULL,NULL,NULL,2000.00,'2016-05-05 07:10:07','sale',2,'Jordan','Jorden face premier',NULL),(52,1,28,NULL,45,3,NULL,NULL,NULL,9000.00,'2016-05-05 08:58:38','sale',9,'Jordan','Jorden face premier',NULL),(53,1,29,35,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-05 17:01:24','service',NULL,NULL,NULL,NULL),(54,1,30,35,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-05 17:01:39','service',NULL,NULL,NULL,NULL),(55,1,32,35,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-05 17:03:59','service',NULL,NULL,NULL,NULL),(56,1,33,35,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-05 17:06:36','service',NULL,NULL,NULL,NULL),(57,1,34,35,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-05 17:14:59','service',NULL,NULL,NULL,NULL),(58,1,35,NULL,46,0,NULL,NULL,NULL,2000.00,'2016-05-06 09:18:54','sale',2,'Jordan','Jorden face premier',NULL),(59,1,36,36,NULL,2,NULL,'Hair Cutting','Hair',1000.00,'2016-05-06 09:37:42','service',NULL,NULL,NULL,NULL),(60,1,36,36,NULL,2,NULL,'Legs only','Waxing Threading',1000.00,'2016-05-06 09:37:43','service',NULL,NULL,NULL,NULL),(61,1,37,37,NULL,3,NULL,'Evening Makeup','Make Up',6000.00,'2016-05-06 09:39:42','service',NULL,NULL,NULL,NULL),(62,1,38,38,NULL,2,NULL,'Evening Makeup','Make Up',6000.00,'2016-05-06 09:58:07','service',NULL,NULL,NULL,NULL),(63,1,39,39,NULL,2,NULL,'Hair Cutting','Hair',1000.00,'2016-05-07 05:42:59','service',NULL,NULL,NULL,100.00),(64,1,40,40,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-07 05:47:47','service',NULL,NULL,NULL,100.00),(65,1,41,41,NULL,1,NULL,'Hair Cutting','Hair',1000.00,'2016-05-07 05:50:29','service',NULL,NULL,NULL,100.00),(66,1,42,42,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-08 06:48:07','service',NULL,NULL,NULL,100.00),(67,1,42,42,NULL,1,NULL,'Bikini wax','Waxing Threading',1500.00,'2016-05-08 06:48:07','service',NULL,NULL,NULL,100.00),(68,1,43,NULL,47,3,NULL,NULL,NULL,112000.00,'2016-05-08 06:54:45','sale',28,'Karaja','Karaja Eye liner',NULL),(69,1,44,43,NULL,3,NULL,'Evening Makeup','Make Up',6000.00,'2016-05-08 07:02:16','service',NULL,NULL,NULL,100.00),(70,1,44,43,NULL,3,NULL,'Arms only','Waxing Threading',800.00,'2016-05-08 07:02:16','service',NULL,NULL,NULL,100.00),(71,1,45,44,NULL,3,NULL,'Full Body','Waxing Threading',2500.00,'2016-05-11 07:18:57','service',NULL,NULL,NULL,100.00),(72,1,46,45,NULL,2,NULL,'Hair Cutting','Hair',1000.00,'2016-05-11 08:20:17','service',NULL,NULL,NULL,100.00),(73,1,46,45,NULL,2,NULL,'Hair Styling','Hair',1000.00,'2016-05-11 08:20:17','service',NULL,NULL,NULL,100.00),(74,1,47,46,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-13 06:44:34','service',NULL,NULL,NULL,100.00),(75,1,48,NULL,48,2,NULL,NULL,NULL,2000.00,'2016-05-13 07:19:20','sale',2,'Jordan','Jorden face premier',NULL),(76,1,49,47,NULL,3,NULL,'Hair Cutting','Hair',1000.00,'2016-05-16 07:28:20','service',NULL,NULL,NULL,100.00),(77,1,49,47,NULL,3,NULL,'Washing','Hair',250.00,'2016-05-16 07:28:20','service',NULL,NULL,NULL,100.00),(78,1,50,48,NULL,2,NULL,'Blow Dry','Hair',500.00,'2016-05-16 11:30:28','service',NULL,NULL,NULL,100.00);
+/*!40000 ALTER TABLE `staff_services` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_roles`
+--
+
+DROP TABLE IF EXISTS `user_roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_roles` (
+  `id_user_roles` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `assignment_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_user_roles`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_roles`
+--
+
+LOCK TABLES `user_roles` WRITE;
+/*!40000 ALTER TABLE `user_roles` DISABLE KEYS */;
+INSERT INTO `user_roles` VALUES (1,1,1,NULL),(2,2,2,'2016-04-08 10:48:25');
+/*!40000 ALTER TABLE `user_roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id_users` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `user_name` varchar(45) DEFAULT NULL,
+  `user_password` varchar(45) DEFAULT NULL,
+  `user_firstname` varchar(45) DEFAULT NULL,
+  `user_lastname` varchar(45) DEFAULT NULL,
+  `user_fullname` varchar(255) DEFAULT NULL,
+  `user_email` varchar(255) DEFAULT NULL,
+  `user_mobile` varchar(45) DEFAULT NULL,
+  `user_phone` varchar(45) DEFAULT NULL,
+  `user_address` varchar(45) DEFAULT NULL,
+  `user_image` varchar(145) DEFAULT NULL,
+  `user_status` varchar(45) DEFAULT 'Active',
+  PRIMARY KEY (`id_users`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,1,'owais','900150983cd24fb0d6963f7d28e17f72','Owais','Shah','Syed Owais Ali Shah','owais.shah@gmail.com','03332127277',NULL,'c-15 Mexyon',NULL,''),(2,1,'owaisr','900150983cd24fb0d6963f7d28e17f72','Owais','Shah','Syed Owais','owais.shah@gmail.com',NULL,NULL,NULL,NULL,'Active');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `visit_services`
+--
+
+DROP TABLE IF EXISTS `visit_services`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `visit_services` (
+  `id_visit_services` int(11) NOT NULL AUTO_INCREMENT,
+  `business_id` int(11) DEFAULT NULL,
+  `customer_visit_id` int(11) DEFAULT NULL,
+  `service_id` int(11) DEFAULT NULL,
+  `service_name` varchar(450) DEFAULT NULL,
+  `staff_ids` varchar(500) DEFAULT NULL,
+  `staff_names` varchar(500) DEFAULT NULL,
+  `product_ids` varchar(500) DEFAULT NULL,
+  `product_names` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id_visit_services`)
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `visit_services`
+--
+
+LOCK TABLES `visit_services` WRITE;
+/*!40000 ALTER TABLE `visit_services` DISABLE KEYS */;
+INSERT INTO `visit_services` VALUES (57,1,25,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','1 | ','Karaja Eye liner | '),(58,1,25,2,'Hair Styling','2 | ','Alya Junaid | ','',''),(59,1,25,3,'Blow Dry','3 | ','Naureen Nuzhat | ','2 | ','Jorden face premier | '),(60,1,26,5,'Full Body','1 | ','Jasmin Fernandes | ','',''),(61,1,26,6,'Legs only','2 | ','Alya Junaid | ','',''),(62,1,27,6,'Legs only','2 | ','Alya Junaid | ','',''),(68,1,30,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','',''),(69,1,30,3,'Blow Dry','3 | ','Naureen Nuzhat | ','',''),(70,1,29,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','',''),(71,1,29,8,'Bikini wax','2 | ','Alya Junaid | ','',''),(72,1,29,7,'Arms only','2 | ','Alya Junaid | ','',''),(73,1,31,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','1 | ','Karaja Eye liner | '),(74,1,31,2,'Hair Styling','3 | ','Naureen Nuzhat | ','',''),(75,1,31,3,'Blow Dry','3 | ','Naureen Nuzhat | ','',''),(76,1,28,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','',''),(77,1,28,2,'Hair Styling','1 | ','Jasmin Fernandes | ','',''),(78,1,28,3,'Blow Dry','2 | ','Alya Junaid | ','',''),(79,1,28,4,'Washing','3 | ','Naureen Nuzhat | ','',''),(80,1,32,5,'Full Body','1 | ','Jasmin Fernandes | ','',''),(81,1,32,6,'Legs only','2 | ','Alya Junaid | ','',''),(82,1,33,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','',''),(83,1,33,2,'Hair Styling','1 | ','Jasmin Fernandes | ','',''),(84,1,33,3,'Blow Dry','2 | ','Alya Junaid | ','',''),(85,1,33,4,'Washing','3 | ','Naureen Nuzhat | ','',''),(87,1,34,13,'Evening Makeup','3 | ','Naureen Nuzhat | ','',''),(88,1,35,1,'Hair Cutting','3 | ','Naureen Nuzhat | ','6 | ','Egg Shampoo | '),(89,1,36,1,'Hair Cutting','2 | ','Alya Junaid | ','',''),(90,1,36,6,'Legs only','2 | ','Alya Junaid | ','',''),(91,1,37,13,'Evening Makeup','3 | ','Naureen Nuzhat | ','',''),(92,1,38,13,'Evening Makeup','2 | ','Alya Junaid | ','',''),(93,1,39,1,'Hair Cutting','2 | ','Alya Junaid | ','',''),(95,1,40,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','',''),(96,1,41,1,'Hair Cutting','1 | ','Jasmin Fernandes | ','',''),(97,1,42,1,'Hair Cutting','3 | ','Naureen Nuzhat | ','',''),(98,1,42,8,'Bikini wax','1 | ','Jasmin Fernandes | ','',''),(99,1,43,13,'Evening Makeup','3 | ','Naureen Nuzhat | ','',''),(100,1,43,7,'Arms only','3 | ','Naureen Nuzhat | ','',''),(101,1,44,5,'Full Body','3 | ','Naureen Nuzhat | ','',''),(102,1,45,1,'Hair Cutting','2 | ','Alya Junaid | ','',''),(103,1,45,2,'Hair Styling','2 | ','Alya Junaid | ','',''),(104,1,46,1,'Hair Cutting','3 | ','Naureen Nuzhat | ','',''),(107,1,47,1,'Hair Cutting','3 | ','Naureen Nuzhat | ','',''),(108,1,47,4,'Washing','3 | ','Naureen Nuzhat | ','',''),(109,1,48,3,'Blow Dry','2 | ','Alya Junaid | ','','');
+/*!40000 ALTER TABLE `visit_services` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping events for database 'salons'
+--
+
+--
+-- Dumping routines for database 'salons'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-05-24 12:48:04
